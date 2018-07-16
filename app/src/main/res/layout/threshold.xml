@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:scrollbars="vertical">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BUMPER THRESHOLD:"/>
+
+        <EditText
+            android:id="@+id/bump_thres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numeric="decimal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POTHOLE THRESHOLD:"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/pot_thres"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numeric="decimal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOWER LIMIT:"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/low"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numeric="decimal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SCALING:"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/scale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numeric="decimal" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BASE SPEED:"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:id="@+id/base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:numeric="decimal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="SAVE"
+                android:layout_marginTop="10dp"
+                android:id="@+id/done"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:layout_weight="1"
+                android:layout_marginTop="10dp"
+                android:id="@+id/okk"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

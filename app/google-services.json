@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "149895587345",
+    "firebase_url": "https://sylvan-shuttle-168112.firebaseio.com",
+    "project_id": "sylvan-shuttle-168112",
+    "storage_bucket": "sylvan-shuttle-168112.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:149895587345:android:1d34be6c599a455d",
+        "android_client_info": {
+          "package_name": "com.example.akash.safestreet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "149895587345-j8ifp6v6299tkmn2joru7g92u3gv0d7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJW4AxM0hvP3rPHTIuv42VoqCI6ux2m6k"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
