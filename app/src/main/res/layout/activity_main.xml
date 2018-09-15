@@ -127,7 +127,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:id="@+id/linear4"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@drawable/watermark">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
@@ -236,6 +237,25 @@
                 android:text="SETTINGS"
                 android:background="@drawable/button_grey"
                 android:id="@+id/setting"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:text="SOUND"
+                            android:id="@+id/sound"
+                            android:layout_alignParentRight="true"/>
+
+                        <CheckBox
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:padding="5dp"
+                            android:text="WIFI"
+                            android:id="@+id/wifi"
+                            android:layout_toStartOf="@+id/sound"/>
+            </RelativeLayout>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
