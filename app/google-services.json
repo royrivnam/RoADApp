@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "149895587345",
-    "firebase_url": "https://sylvan-shuttle-168112.firebaseio.com",
-    "project_id": "sylvan-shuttle-168112",
-    "storage_bucket": "sylvan-shuttle-168112.appspot.com"
+    "project_number": "1063765391532",
+    "firebase_url": "https://roadapp-38146.firebaseio.com",
+    "project_id": "roadapp-38146",
+    "storage_bucket": "roadapp-38146.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:149895587345:android:1d34be6c599a455d",
+        "mobilesdk_app_id": "1:1063765391532:android:08e3f6de0ab07cc3",
         "android_client_info": {
-          "package_name": "com.example.akash.safestreet"
+          "package_name": "com.mcnrg.akash.safestreet"
         }
       },
       "oauth_client": [
         {
-          "client_id": "149895587345-j8ifp6v6299tkmn2joru7g92u3gv0d7r.apps.googleusercontent.com",
+          "client_id": "1063765391532-eqlh2uie8qhnei4tqip27cnamiq2rb3d.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBJW4AxM0hvP3rPHTIuv42VoqCI6ux2m6k"
+          "current_key": "AIzaSyD64v-6PzqdngJheMLavrR2bzh16TvMhyE"
         }
       ],
       "services": {

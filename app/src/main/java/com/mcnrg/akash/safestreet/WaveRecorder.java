@@ -1,4 +1,4 @@
-package com.example.akash.safestreet;
+package com.mcnrg.akash.safestreet;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;

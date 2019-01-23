@@ -1,4 +1,4 @@
-package com.example.akash.safestreet;
+package com.mcnrg.akash.safestreet;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
@@ -7,15 +7,11 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
-import android.widget.ArrayAdapter;
 
-import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
-import static android.content.Context.WIFI_SERVICE;
 
 public class WifiDetector {
 

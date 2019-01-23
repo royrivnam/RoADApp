@@ -1,4 +1,4 @@
-package com.example.akash.safestreet;
+package com.mcnrg.akash.safestreet;
 
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,4 +14,5 @@ public class Constants {
     static String position="";
     static String starttime="";
     static String model = android.os.Build.MODEL;
+    static String phn="";
 }

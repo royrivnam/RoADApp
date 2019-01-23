@@ -1,11 +1,9 @@
-package com.example.akash.safestreet;
+package com.mcnrg.akash.safestreet;
 
 import android.Manifest;
 import android.app.AlertDialog;
-import android.app.ApplicationErrorReport;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,7 +22,6 @@ import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.BatteryManager;
 import android.os.Environment;
-import android.os.StrictMode;
 import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -90,10 +87,52 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     Calendar calendar;
     SimpleDateFormat formatter = new SimpleDateFormat("dd_MM_yyyy-hh_mm_ss");
 
+
+
+    Button m1,m2,m3,m4,m5;
+    RandomAccessFile mantag;
+    long manstamp;
+    File root2;
+
+    public static SharedPreferences shpref2;
+    public final static String ss2 = "fname2";
+    public final static String k3 = "b2";
+    String register="";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        shpref2 = MainActivity.this.getSharedPreferences(ss2, Context.MODE_PRIVATE);
+        register=shpref2.getString(k3,"");
+        Toast.makeText(MainActivity.this,"Welcome "+register+"!",Toast.LENGTH_SHORT).show();
+        final Dialog phone=new Dialog(MainActivity.this);
+        phone.setContentView(R.layout.identity);
+        phone.setTitle("Enter Phone Number!!");
+        phone.setCancelable(false);
+        final EditText phnno=(EditText)phone.findViewById(R.id.phnEntry);
+        final Button entry=(Button)phone.findViewById(R.id.entrybutton);
+        entry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(phnno.getText().toString().length()==10)
+                {
+                    register=phnno.getText().toString();
+                    SharedPreferences.Editor editor2=shpref2.edit();
+                    editor2.putString(k3,phnno.getText().toString());
+                    editor2.commit();
+                    phone.dismiss();
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"Enter valid phone number!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        if(register.equals(""))
+        phone.show();
+
         wifiCheck=(WifiManager)getApplicationContext().getSystemService(Context.WIFI_SERVICE);
         vehicleL1 = (LinearLayout) findViewById(R.id.twoL);
         vehicleL2 = (LinearLayout) findViewById(R.id.threeL);
@@ -116,7 +155,149 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         settings = (Button) findViewById(R.id.setting);
         soundbox = (CheckBox) findViewById(R.id.sound);
         wifibox = (CheckBox) findViewById(R.id.wifi);
-        soundbox.setChecked(true);
+
+
+        m1=(Button)findViewById(R.id.mb1);
+        m2=(Button)findViewById(R.id.mp1);
+        m3=(Button)findViewById(R.id.mj1);
+        m4=(Button)findViewById(R.id.mn1);
+        m5=(Button)findViewById(R.id.mc1);
+
+        m1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(button.getText().toString().equals("STOP")) {
+                    String path2 = Environment.getExternalStorageDirectory() + "/SafeStreet/" + Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/";
+                    root2 = new File(path2);
+                    if (!root2.exists()) {
+                        root2.mkdirs();
+                    }
+                    try {
+                        mantag = new RandomAccessFile(root + "/ManualTagging.txt", "rw");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        mantag.seek(mantag.length());
+                        mantag.write(("B " + manstamp + "\n").getBytes());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Cannot tag now!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        m2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(button.getText().toString().equals("STOP")) {
+                    String path2 = Environment.getExternalStorageDirectory() + "/SafeStreet/" + Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/";
+                    root2 = new File(path2);
+                    if (!root2.exists()) {
+                        root2.mkdirs();
+                    }
+                    try {
+                        mantag = new RandomAccessFile(root + "/ManualTagging.txt", "rw");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        mantag.seek(mantag.length());
+                        mantag.write(("P " + manstamp + "\n").getBytes());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Cannot tag now!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        m3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(button.getText().toString().equals("STOP")) {
+                    String path2 = Environment.getExternalStorageDirectory() + "/SafeStreet/" + Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/";
+                    root2 = new File(path2);
+                    if (!root2.exists()) {
+                        root2.mkdirs();
+                    }
+                    try {
+                        mantag = new RandomAccessFile(root + "/ManualTagging.txt", "rw");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        mantag.seek(mantag.length());
+                        mantag.write(("J " + manstamp + "\n").getBytes());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Cannot tag now!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        m4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(button.getText().toString().equals("STOP")) {
+                    String path2 = Environment.getExternalStorageDirectory() + "/SafeStreet/" + Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/";
+                    root2 = new File(path2);
+                    if (!root2.exists()) {
+                        root2.mkdirs();
+                    }
+                    try {
+                        mantag = new RandomAccessFile(root + "/ManualTagging.txt", "rw");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        mantag.seek(mantag.length());
+                        mantag.write(("N " + manstamp + "\n").getBytes());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Cannot tag now!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        m5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(button.getText().toString().equals("STOP")) {
+                    String path2 = Environment.getExternalStorageDirectory() + "/SafeStreet/" + Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/";
+                    root2 = new File(path2);
+                    if (!root2.exists()) {
+                        root2.mkdirs();
+                    }
+                    try {
+                        mantag = new RandomAccessFile(root + "/ManualTagging.txt", "rw");
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        mantag.seek(mantag.length());
+                        mantag.write(("C " + manstamp + "\n").getBytes());
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Cannot tag now!!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+        //soundbox.setChecked(true);
+        soundbox.setEnabled(false);
+        soundbox.setVisibility(View.GONE);
         wifibox.setChecked(true);
         Constants.vehiclestoreL = vehicleL1;
         Constants.vehiclestore = vehicle1;
@@ -219,8 +400,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     askForPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE, 0x1);
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED)
                     askForPermission(Manifest.permission.ACCESS_FINE_LOCATION, 0x1);
-                if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED)
-                    askForPermission(Manifest.permission.RECORD_AUDIO, 0x1);
+                /*if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED)
+                    askForPermission(Manifest.permission.RECORD_AUDIO, 0x1);*/
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.CHANGE_WIFI_STATE) != PackageManager.PERMISSION_GRANTED)
                     askForPermission(Manifest.permission.CHANGE_WIFI_STATE, 0x1);
                 if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -247,7 +428,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                                 } catch (FileNotFoundException e) {
                                     e.printStackTrace();
                                 }
-                                String whole = "bump:" + String.valueOf((float) bump_thres) + "," + "pothole:" + String.valueOf((float) pot_thres) + "," + "basespeed:" + String.valueOf((float) baselimit) + "," + "lowerspeed:" + String.valueOf((float) lowlimit) + "," + "scaling:" + String.valueOf((float) scaling) + "\n" + "x,y,z,latitude,longitude,bearing,aaccuracy,light,timestamp" + "\n";
+                                String whole = "bump:" + String.valueOf((float) bump_thres) + "," + "pothole:" + String.valueOf((float) pot_thres) + "," + "basespeed:" + String.valueOf((float) baselimit) + "," + "lowerspeed:" + String.valueOf((float) lowlimit) + "," + "scaling:" + String.valueOf((float) scaling) + "\n" + "x,y,z,latitude,longitude,bearing,accuracy,light,timestamp" + "\n";
                                 try {
                                     raf.seek(raf.length());
                                     raf.write(whole.getBytes());
@@ -268,14 +449,14 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                                 button.setTextColor(Color.parseColor("#FFFFFFFF"));
                                 button.setBackgroundResource(R.drawable.button_red);
 
-                                if (soundbox.isChecked() == true && ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                                /*if (soundbox.isChecked() == true && ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
                                     wave = new WaveRecorder(path + "/SoundRecord.wav");
                                     wave.startRecording();
                                 } else {
                                     soundbox.setChecked(false);
                                     Toast.makeText(MainActivity.this, "Permission is required to use \"SOUND\" feature. Go to Settings->Apps->SafeStreet->Permissions->Microphone->On", Toast.LENGTH_SHORT).show();
                                 }
-                                soundbox.setEnabled(false);
+                                soundbox.setEnabled(false);*/
 
                                 if (wifibox.isChecked() == true && wifiCheck.isWifiEnabled())
                                 {
@@ -302,6 +483,19 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }
+
+                                        /*if (soundbox.isChecked() == true && ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
+                                            wave.stopRecording();
+                                        }
+                                        soundbox.setEnabled(true);*/
+
+                                        if (wifibox.isChecked() == true && wifiCheck.isWifiEnabled()) {
+                                            wifi.stopDetecting();
+                                        }
+                                        wifibox.setEnabled(true);
+                                        TotalDistance td=new TotalDistance(Environment.getExternalStorageDirectory() + "/SafeStreet/Total_distance_in_kms.txt",Double.parseDouble(getDistance(distance)));
+                                        td.calculate();
+
                                         adjustment = 0;
                                         prev = -900000;
                                         prev2 = -900000;
@@ -328,21 +522,49 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                                         button.setTextColor(Color.parseColor("#FF000000"));
                                         button.setBackgroundResource(R.drawable.button_green);
 
-                                        if (soundbox.isChecked() == true && ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.RECORD_AUDIO) == PackageManager.PERMISSION_GRANTED) {
-                                            wave.stopRecording();
-                                        }
-                                        soundbox.setEnabled(true);
-
-                                        if (wifibox.isChecked() == true && wifiCheck.isWifiEnabled()) {
-                                            wifi.stopDetecting();
-                                        }
-                                        wifibox.setEnabled(true);
-
-                                        TotalDistance td=new TotalDistance(Environment.getExternalStorageDirectory() + "/SafeStreet/Total_distance_in_kms.txt",distance);
-                                        td.calculate();
-                                        uploadFile("All_Details.txt","first");
-                                        uploadFile("WifiRecord.txt","second");
-                                        uploadFile("SoundRecord.wav","third");
+                                        final Dialog rating=new Dialog(MainActivity.this);
+                                        rating.setContentView(R.layout.rating);
+                                        rating.setTitle("RATE THE DRIVER!!");
+                                        rating.setCancelable(false);
+                                        final EditText ratingValue=(EditText)rating.findViewById(R.id.ratingEntry);
+                                        final Button submit=(Button)rating.findViewById(R.id.submitbutton);
+                                        submit.setOnClickListener(new View.OnClickListener() {
+                                            @Override
+                                            public void onClick(View view) {
+                                                if(!(ratingValue.getText().toString().trim().equals(""))) {
+                                                    if (Integer.parseInt(ratingValue.getText().toString()) <= 5 && Integer.parseInt(ratingValue.getText().toString()) > 0) {
+                                                        String path2 = Environment.getExternalStorageDirectory() + "/SafeStreet/" + Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/";
+                                                        root2 = new File(path2);
+                                                        if (!root2.exists()) {
+                                                            root2.mkdirs();
+                                                        }
+                                                        try {
+                                                            mantag = new RandomAccessFile(root + "/ManualTagging.txt", "rw");
+                                                        } catch (FileNotFoundException e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                        try {
+                                                            mantag.seek(mantag.length());
+                                                            mantag.write(("Driver Rating " + ratingValue.getText().toString() + " out of 5").getBytes());
+                                                            mantag.close();
+                                                        } catch (Exception e) {
+                                                            e.printStackTrace();
+                                                        }
+                                                        rating.dismiss();
+                                                        uploadFile("All_Details.txt", "first");
+                                                        uploadFile("WifiRecord.txt", "second");
+                                                        uploadFile("ManualTagging.txt", "third");
+                                                        //uploadFile("SoundRecord.wav","fourth");
+                                                    } else {
+                                                        Toast.makeText(MainActivity.this, "Wrong Value Entered", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                }
+                                                else {
+                                                    Toast.makeText(MainActivity.this, "Please enter a value between 0 to 5", Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                        rating.show();
                                     }
                                 });
                                 alert.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -486,6 +708,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 break;
         }
         long timestamp = SystemClock.elapsedRealtime();
+        manstamp=timestamp;
+
+
         float sum = (float) Math.sqrt((acceleration[0] * acceleration[0]) + (acceleration[1] * acceleration[1]) + (acceleration[2] * acceleration[2]));
         if ((timestamp - prev) > 850000) {
             adjustment = 0;
@@ -550,7 +775,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             update2.setText(getTraveltime(timestamp));
             update4.setText(filesize + " Mb");
             update5.setText(getBatteryconsumed(battery) + " %");
-            update6.setText(getSpeed(speed) + " km/s");
+            update6.setText(getSpeed(speed) + " km/hr");
             prev2 = timestamp;
         }
     }
@@ -620,20 +845,25 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private void uploadFile(String filename, String index) {
-        String path = Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/" + filename;
+        final String path = Constants.vehicle + "_" + Constants.position + "_" + Constants.starttime + "_" + Constants.model + "/" + filename;
         Uri filePath = Uri.fromFile(new File(Environment.getExternalStorageDirectory() + "/SafeStreet/" + path));
         if (filePath != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading "+index+" file...");
             progressDialog.show();
-
-            StorageReference riversRef = storageReference.child(path);
+            String path2=register+"_"+path;
+            StorageReference riversRef = storageReference.child(path2);
             riversRef.putFile(filePath)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "File uploaded to the server successfully", Toast.LENGTH_LONG).show();
+                            File file=new File(Environment.getExternalStorageDirectory() + "/SafeStreet/" + path);
+                            try{
+                                file.delete();
+                            }
+                            catch(Exception e){e.printStackTrace();}
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

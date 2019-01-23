@@ -1,4 +1,4 @@
-package com.example.akash.safestreet;
+package com.mcnrg.akash.safestreet;
 
 import org.junit.Test;
 
